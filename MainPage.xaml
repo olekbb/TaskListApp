@@ -1,0 +1,75 @@
+﻿<Page
+    x:Class="TaskListApp.MainPage"
+    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+    xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+    xmlns:local="using:TaskListApp"
+    xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+    xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+    mc:Ignorable="d">
+
+    <!--  <Frame Name="MyFrame"> -->
+    <Grid Background="{ThemeResource ApplicationPageBackgroundThemeBrush}">
+        <!-- 
+        <TextBlock Text="{Binding Title}" 
+                   FontSize="24"/>
+        <TextBox Text="{Binding Title, Mode=TwoWay}"/> 
+        <Button Content="Change title"
+                Command="{Binding ClickCommand}" /> 
+        -->
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <ListBox ItemsSource="{Binding ItemsCollection}" Grid.Row="0">
+            <ListBox.ItemTemplate>
+                <DataTemplate>
+                    <Grid>
+                        <Grid.RowDefinitions>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                            <RowDefinition Height="Auto"/>
+                        </Grid.RowDefinitions>
+                        <Grid.ColumnDefinitions>
+                            <ColumnDefinition Width="50"/>
+                            <ColumnDefinition Width="*"/>
+                        </Grid.ColumnDefinitions>
+                        <TextBlock Grid.Column ="0" Grid.Row="0" Text="Title: " FontSize="14"/>
+                        <TextBlock Grid.Column ="0" Grid.Row="1" Text="Value: " FontSize="10"/>
+                        <TextBlock Grid.Column ="0" Grid.Row="2" Text="Id: " FontSize="8"/>
+                        <TextBlock Grid.Column ="0" Grid.Row="3" Text="Owner: " FontSize="8"/>
+
+                        <TextBlock Grid.Column ="1" Grid.Row="0" Text="{Binding Title}" FontSize="14"/>
+                        <TextBlock Grid.Column ="1" Grid.Row="1" Text="{Binding Value}" FontSize="10"/>
+                        <TextBlock Grid.Column ="1" Grid.Row="2" Text="{Binding Id}" FontSize="8"/>
+                        <TextBlock Grid.Column ="1" Grid.Row="3" Text="{Binding OwnerId}" FontSize="8"/>
+                    </Grid>
+                </DataTemplate>
+            </ListBox.ItemTemplate>
+
+        </ListBox>
+        
+        
+        <!--<Button Content="PersistentTextPage"
+                Click="GoToPage2"
+                Grid.Row="2"/>-->
+
+        <!--<Button Content="Send Task to Rest API"
+                Click="SendTaskToApi"
+                Grid.Row="2"/>-->
+
+        <!--<Button Content="Sync"
+                Click="DownloadTasks"
+                Grid.Row="3"/>-->
+        <StackPanel Grid.Row="1" >
+            <Button Content="Add task" Click="GoToAddTaskPage" HorizontalAlignment="Stretch"/>
+            <Button Command="{Binding SyncCommand}" HorizontalAlignment="Stretch">Sync</Button>
+            <Button Command="{Binding DeleteCommand}" HorizontalAlignment="Stretch">Delete</Button>
+            <TextBox Height="23" Name="Value" Text="{Binding Id, Mode=TwoWay}" HorizontalAlignment="Stretch"/>
+            <Button Content="Log out" Click="GoToLoginPage" HorizontalAlignment="Stretch"/>
+        </StackPanel>
+        
+        
+    </Grid>
+    <!-- </Frame> -->
+</Page>
