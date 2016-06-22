@@ -23,7 +23,7 @@ namespace TaskListApp
                   .Add(new MediaTypeWithQualityHeaderValue("application/json"));
         }
 
-        public void uploadTask(ToDoTask task)
+        public void UploadTask(ToDoTask task)
         { 
             String taskString = "{\"title\": \"" + task.Title + "\",\"value\": \"" + 
                                 task.Value + "\",\"ownerId\": \"" + task.OwnerId + "\"}";
@@ -54,7 +54,7 @@ namespace TaskListApp
             return obj;
         }
 
-        public void deleteTask(string id)
+        public void DeleteTask(string id)
         {
             HttpClient httpClient = new HttpClient();
             HttpRequestMessage request = new HttpRequestMessage
@@ -64,16 +64,6 @@ namespace TaskListApp
                 RequestUri = new Uri("http://windowsphoneuam.azurewebsites.net/api/ToDoTasks" + "?id=" + id)
             };
             httpClient.SendAsync(request);
-
         }
-
-        //public async Task<string> DownloadTasks(string OwnerId)
-        //{
-        //    var result = await client.GetAsync("http://windowsphoneuam.azurewebsites.net/api/ToDoTasks" + "?OwnerId=" + OwnerId);
-        //    var items = await result.Content.ReadAsStringAsync();
-
-        //    return items;
-        //}
-
     }
 }

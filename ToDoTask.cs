@@ -48,9 +48,5 @@ namespace TaskListApp
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-        public string Serialize()
-        {
-            return JsonConvert.SerializeObject(this);
-        }
     }
 }

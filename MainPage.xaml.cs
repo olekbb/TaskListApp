@@ -23,12 +23,10 @@ namespace TaskListApp
     /// </summary>
     public sealed partial class MainPage : Page
     {
-        private TaskManager taskManager;
         public MainPage()
         {
             this.InitializeComponent();
             DataContext = ((App)App.Current).MyViewModelLocator.getViewModel();
-            taskManager = new TaskManager();
 
         }
         private void GoToAddTaskPage(object sender, RoutedEventArgs e)
@@ -38,25 +36,6 @@ namespace TaskListApp
         private void GoToLoginPage(object sender, RoutedEventArgs e)
         {
             this.Frame.Navigate(typeof(LoginPage));
-        }
-        private void GoToPage2(object sender, RoutedEventArgs e)
-        {
-            this.Frame.Navigate(typeof(PersistentTextPage));
-        }
-        private void SendTaskToApi(object sender, RoutedEventArgs e)
-        {
-            ToDoTask task = new ToDoTask("testTitle2", "testValue2", "testOwner");
-            taskManager.uploadTask(task);
-        }
-
-        private async void DownloadTasks(object sender, RoutedEventArgs e)
-        {
-            
-            List<ToDoTask> list = await taskManager.DownloadTasks("testOwner");
-            foreach (ToDoTask element in list)
-            {
-                Debug.WriteLine(element.Serialize());
-            }
         }
     }
 }

@@ -76,17 +76,12 @@ namespace TaskListApp.ViewModels
             }
             
         }
-
-        public ActionCommand ClickCommand { get; set; }
         public ICommand AddElementCommand { get; set; }
         public ICommand SyncCommand { get; set; }
         public ICommand DeleteCommand { get; set; }
 
         public MainViewModel()
         {
-            //ItemsCollection.Add(new ToDoTask("task1", "opis"));
-            //ItemsCollection.Add(new ToDoTask("task2", "opis"));
-            //ItemsCollection.Add(new ToDoTask("task3", "opis"));
             taskManager = new TaskManager();
             User = "defaultUser";
             
@@ -97,7 +92,7 @@ namespace TaskListApp.ViewModels
 
         private void Delete()
         {
-            taskManager.deleteTask(Id);
+            taskManager.DeleteTask(Id);
         }
 
         private async void Sync()
@@ -112,14 +107,8 @@ namespace TaskListApp.ViewModels
         private void AddElement()
         {
             ToDoTask task = new ToDoTask(Title, Value, User);
-            //ItemsCollection.Add(task);
-            taskManager.uploadTask(task);
+            taskManager.UploadTask(task);
             Sync();
-        }
-
-        private void OnClick()
-        {
-            Title = "Time: " + DateTime.Now.Ticks;
         }
     }
 }

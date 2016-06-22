@@ -16,13 +16,5 @@ namespace TaskListApp.ViewModels
                 handler(this, new PropertyChangedEventArgs(name));
             }
         }
-
-        //public void NotifyPropertyChanged([CallerMemberName] String propertyName = "")
-        //{
-        //    if (PropertyChanged != null)
-        //    {
-        //        PropertyChanged(this, new PropertyChangedEventArgs(propertyName));
-        //    }
-        //}
     }
 }
